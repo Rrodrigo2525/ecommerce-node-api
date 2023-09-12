@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="DqfU-nGSnhUROsuJlLy-" name="Arquitetura em Camadas">
-        <mxGraphModel dx="1189" dy="792" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1386" dy="792" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -109,7 +109,7 @@
                     <mxGeometry x="198" y="183" width="123.5" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="Módulo/Subdominio" style="shape=umlFrame;whiteSpace=wrap;html=1;strokeWidth=2;fontColor=#ffffff;fillColor=#0050ef;strokeColor=#001DBC;dashed=1;width=110;height=20;" parent="1" vertex="1">
-                    <mxGeometry x="502" y="147" width="163" height="330" as="geometry"/>
+                    <mxGeometry x="502" y="145" width="163" height="330" as="geometry"/>
                 </mxCell>
                 <mxCell id="59" value="" style="curved=1;endArrow=classic;html=1;fillColor=#6a00ff;strokeColor=#3700CC;" edge="1" parent="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
