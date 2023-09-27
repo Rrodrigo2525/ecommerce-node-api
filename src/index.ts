@@ -1,45 +1,51 @@
 import { Categoria } from '@modules/catalogo/domain/categoria/categoria.entity';
+import { CategoriaPrismaRepository } from '@modules/catalogo/infra/database/categoria.prisma.repository';
 import { PrismaClient } from '@prisma/client';
 import { DomainException } from '@shared/domain/domain.exception';
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+    log: ['query', 'info'],
+    errorFormat: 'pretty'
+});
 
 async function main() {
-    
-    ///////////////////
-	//Criar Categoria//
-	///////////////////
-
-	/*let categoria: Categoria;
-	categoria = Categoria.criar({nome:'mesa'});
-
-    ////////////////////////////////
-	//Persistir Categoria no Banco//
-	////////////////////////////////
-		
-    await prisma.categoria.create({
-        data: {
-            id: categoria.id,
-            nome: categoria.nome
+   
+    prisma.$connect().then(
+        async () => {
+            console.log('Postgres Conectado');
         }
-    });*/
+    );
 
-    ////////////////////////////////
-    //Atualizar Categoria no Banco//
-    ////////////////////////////////
-    
-    const categoriaRecuperada = await prisma.categoria.update({
-        where: { id: "3ddc3641-f163-47cd-b1ab-11f7ff3206fc" },
-        data: { nome: 'banho' },
-    })
+    const categoriaRepo = new CategoriaPrismaRepository(prisma);
 
+    //const categoriaRecuperada = await categoriaRepo.recuperarPorUuid("c2666bdb-c055-40bb-951b-32f899f41e30");
 
-    /////////////////////
-	//Listar Categorias//
-	/////////////////////
+    //console.log(categoriaRecuperada);
 
-    const ListaCategorias = await prisma.categoria.findMany();
-    console.log(ListaCategorias);
+    //const categoria: Categoria = Categoria.criar({
+    //    nome:'Banho'
+    //})    
+
+    //const categoriaInserida = await categoriaRepo.inserir(categoria);
+
+    //console.log(categoriaInserida);
+
+    //const categorias = await categoriaRepo.recuperarTodos();
+
+    //console.log(categorias);
+
+    //const categoria = Categoria.recuperar({
+    //    id: "c2666bdb-c055-40bb-951b-32f899f41e30",
+    //    nome: "Mesa"
+    //})    
+
+    //const categoriaAtualizada = await categoriaRepo.atualizar(categoria.id,categoria);
+
+    //console.log(categoriaAtualizada)
+
+    const categoriaDeletada = await categoriaRepo.deletar("c2666bdb-c055-40bb-951b-32f899f41e30");
+    console.log(categoriaDeletada)
+
 }
 
 main()
