@@ -33,14 +33,14 @@ model ProdutosCategorias {
 }
 
 model Produto {
-  id              String @id @db.Uuid
-  nome            String @db.VarChar(50)
-  descricao       String @db.VarChar(200)
-  valor           Int
-  dataCriacao     DateTime @default(now())@map("data_criacao")
-  dataAtualizacao DateTime @updatedAt @map("data_atualizacao")
-  categorias      ProdutosCategorias[]
+  id                String   @id @db.Uuid
+  nome              String   @db.VarChar(50)
+  descricao         String   @db.VarChar(200)
+  valor             Int
+  dataCriacao       DateTime @default(now()) @map("data_criacao")
+  dataAtualizacao   DateTime @updatedAt @map("data_atualizacao")
+  dataExclusao      DateTime? @map("data_exclusao")
+  categorias        ProdutosCategorias[]
 
   @@map("produtos")
-
 }

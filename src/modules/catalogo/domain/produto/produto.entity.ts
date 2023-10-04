@@ -14,6 +14,7 @@ class Produto extends Entity<IProduto> implements IProduto {
     private _descricao: string;
     private _valor: number;
     private _categorias: Array<Categoria>;
+    static descricao: any;
 
     ///////////////
     //Gets e Sets//
