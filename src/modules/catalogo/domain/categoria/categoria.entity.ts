@@ -6,15 +6,17 @@ import { CriarCategoriaProps, ICategoria, RecuperarCategoriaProps } from "./cate
 class Categoria extends Entity<ICategoria> implements ICategoria {
 
     ///////////////////////
-    //Atributos de Classe//
-    ///////////////////////
+	//Atributos de Classe//
+	///////////////////////
 
-    private _nome: string;
-
+	private _nome: string;
+    private _dataCriacao?: Date | undefined;
+	private _dataAtualizacao?: Date | undefined;
+    
     ///////////////
-    //Gets e Sets//
-    ///////////////
-
+	//Gets e Sets//
+	///////////////
+   
     public get nome(): string {
         return this._nome;
     }
@@ -35,13 +37,31 @@ class Categoria extends Entity<ICategoria> implements ICategoria {
         this._nome = value;
     }
 
+    public get dataCriacao(): Date | undefined {
+        return this._dataCriacao;
+    }
+
+    private set dataCriacao(value: Date | undefined) {
+        this._dataCriacao = value;
+    }
+
+    public get dataAtualizacao(): Date | undefined {
+        return this._dataAtualizacao;
+    }
+
+    private set dataAtualizacao(value: Date | undefined) {
+        this._dataAtualizacao = value;
+    }
+
     //////////////
-    //Construtor//
-    //////////////
+	//Construtor//
+	//////////////
 
     private constructor(categoria:ICategoria){
         super(categoria.id);
         this.nome = categoria.nome;
+        this.dataCriacao = categoria.dataCriacao;
+        this.dataAtualizacao = categoria.dataAtualizacao;
     }
 
     /////////////////////////
@@ -49,13 +69,16 @@ class Categoria extends Entity<ICategoria> implements ICategoria {
     /////////////////////////
 
     public static criar(props: CriarCategoriaProps): Categoria {
-        let { nome } = props;
-        return new Categoria({ nome });
+        return new Categoria(props);
     }
 
     public static recuperar(props: RecuperarCategoriaProps): Categoria {
         return new Categoria(props);
     }
+
+    ///////////
+    //Métodos//
+    ///////////
 
     public toDTO(): ICategoria {
         return CategoriaMap.toDTO(this);
@@ -64,4 +87,3 @@ class Categoria extends Entity<ICategoria> implements ICategoria {
 }
 
 export { Categoria };
-

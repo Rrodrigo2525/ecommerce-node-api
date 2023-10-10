@@ -26,7 +26,7 @@ async function main() {
     //Recuperar Categoria por UUID//
     ////////////////////////////////
     
-    //const categoriaRecuperada: Categoria | null = await categoriaRepo.recuperarPorUuid("21c6d449-2902-4d39-9d76-365180e6def9");
+    //const categoriaRecuperada: Categoria | null = await categoriaRepo.recuperarPorUuid("294e855c-61e6-4445-9a43-3c6715be2e5f");
 
     //console.log(categoriaRecuperada);
 
@@ -51,21 +51,21 @@ async function main() {
     //Inserir Categoria//
     /////////////////////
     
-    // const categoria: Categoria = Categoria.criar({
-    //     nome:'Sala '
-    // });     
+    //const categoria: Categoria = Categoria.criar({
+        // nome:'Cozinha'
+     //});     
 
-    // const categoriaInserida = await categoriaRepo.inserir(categoria);
+     //const categoriaInserida = await categoriaRepo.inserir(categoria);
 
-    // console.log(categoriaInserida);
+     //console.log(categoriaInserida);
 
     ///////////////////////
     //Atualizar Categoria//
     ///////////////////////
     
     //const categoria: Categoria = Categoria.recuperar({
-       // id: "b11bac4a-f225-43c0-8bd2-b6305a4d9e0f",
-       // nome: "Banho2"
+        //id: "294e855c-61e6-4445-9a43-3c6715be2e5f",
+        //nome: "Cozinha Americana"
     //});     
 
     //const atualizouCategoria: boolean = await categoriaRepo.atualizar(categoria.id,categoria);
@@ -76,7 +76,7 @@ async function main() {
     //Deletar Categoria//
     /////////////////////
     
-    //const categoriaDeletada: boolean = await categoriaRepo.deletar("b11bac4a-f225-43c0-8bd2-b6305a4d9e0f");
+   // const categoriaDeletada: boolean = await categoriaRepo.deletar("294e855c-61e6-4445-9a43-3c6715be2e5f");
     
     //console.log(categoriaDeletada);
 

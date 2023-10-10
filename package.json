@@ -6,8 +6,9 @@
   "scripts": {
     "dev:console": "node -r tsconfig-paths/register -r sucrase/register src/index.ts",
     "test": "vitest",
-    "test: run": "vitest run",
-    "test: ui": "vitest --ui"
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:verbose": "vitest --reporter verbose"
   },
   "prisma": {
     "schema": "./src/main/infra/database/orm/prisma/schema.prisma"

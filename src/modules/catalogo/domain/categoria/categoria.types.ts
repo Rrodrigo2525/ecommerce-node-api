@@ -1,14 +1,23 @@
-//Todos os atributos/ propriedades que uma categoria deve ter no sistema
+import { IDatasControle, KeysDatasControle } from "@shared/domain/datas.types";
 
-import { type } from "os";
-
+//Todos os atributos/propriedades que uma categoria deve ter no sistema
 //Auxilia na criação de invariantes e modelos ricos
-interface ICategoria {
+interface ICategoria extends IDatasControle {
     id?: string;
-    nome: string;
+    nome:string;
 }
 
-type CriarCategoriaProps = Omit<ICategoria, "id">;
-type RecuperarCategoriaProps = Required<ICategoria>;
+//Atributos que são necessários para criar uma categoria
+//Garantir a integridade dos dados de um objeto
+type CriarCategoriaProps = Omit<ICategoria, "id" | KeysDatasControle>;
 
-export {ICategoria, CriarCategoriaProps, RecuperarCategoriaProps}
+//Atributos que são necessários para recuperar uma categoria
+type RecuperarCategoriaProps = ICategoria & {
+    id: NonNullable<ICategoria['id']>
+}
+
+export {
+    ICategoria , 
+    CriarCategoriaProps,
+    RecuperarCategoriaProps
+}

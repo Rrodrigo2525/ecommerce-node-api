@@ -4,6 +4,7 @@ import { IProduto, RecuperarProdutoProps } from "../domain/produto/produto.types
 import { Categoria } from "../domain/categoria/categoria.entity";
 import { CategoriaMap } from "./categoria.map";
 
+
 class ProdutoMap {
 
     public static toDTO(produto: Produto): IProduto {
@@ -12,7 +13,10 @@ class ProdutoMap {
           nome: produto.nome,
           descricao: produto.descricao,
           valor: produto.valor,
-          categorias: produto.categorias
+          categorias: produto.categorias,
+          dataCriacao: produto.dataCriacao,
+          dataAtualizacao: produto.dataAtualizacao,
+          dataExclusao: produto.dataExclusao
         }
     }
 
@@ -20,26 +24,36 @@ class ProdutoMap {
         return Produto.recuperar(produto);
     }
 
-    public static fromPrismaModelToDomain(produto: ProdutoComCategoriaPrisma): Produto{
+    public static fromPrismaModelToDomain(produtoPrisma: ProdutoComCategoriaPrisma): Produto {
 
+        //Define e inicializa um array de entidades de domínios categoria
         const categorias: Array<Categoria> = [];
 
-        produto.categorias.map(
+        //Transforma as categorias obtidas com o prisma em entidades de domínio categoria
+        produtoPrisma.categorias.map(
             (categoria) => {
                 categorias.push(
                     CategoriaMap.fromPrismaModelToDomain(categoria.categoria)
                 )
             }
-        ) ;
+        );
 
+        //Retorna um produto como uma entidade de domínio
         return this.toDomain({
-            id: produto.id,
-            nome: produto.nome,
-            descricao: produto.descricao,
-            valor: produto.valor,
-            categorias: categorias
+            id: produtoPrisma.id,
+            nome: produtoPrisma.nome,
+            descricao: produtoPrisma.descricao,
+            valor: produtoPrisma.valor,
+            categorias: categorias,
+            dataCriacao: produtoPrisma.dataCriacao,
+            dataAtualizacao: produtoPrisma.dataAtualizacao,
+            dataExclusao: produtoPrisma.dataExclusao
         });
-    }
-};
 
-export { ProdutoMap };
+    }
+
+
+
+}
+
+export { ProdutoMap }
