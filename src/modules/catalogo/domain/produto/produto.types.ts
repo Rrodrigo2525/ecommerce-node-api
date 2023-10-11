@@ -1,6 +1,10 @@
 import { IDatasControle, KeysDatasControle } from "@shared/domain/datas.types";
 import { Categoria } from "../categoria/categoria.entity";
 
+enum StatusProduto {
+    ATIVO = "ATIVO",
+    DESATIVO = "DESATIVO"
+}
 
 //Todos os atributos/propriedades que um produto deve ter no sistema
 //Auxilia na criação de invariantes e modelos ricos
@@ -10,6 +14,7 @@ interface IProduto extends IDatasControle{
     descricao:string;
     valor: number;
     categorias: Array<Categoria>;
+    status?: StatusProduto
 }
 
 //Atributos que são necessários para criar um produto 
@@ -26,5 +31,6 @@ type RecuperarProdutoProps = IProduto & {
 export {
     IProduto, 
     CriarProdutoProps,
-    RecuperarProdutoProps
+    RecuperarProdutoProps,
+    StatusProduto
 }

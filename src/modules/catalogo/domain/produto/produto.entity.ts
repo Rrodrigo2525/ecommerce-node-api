@@ -19,6 +19,8 @@ class Produto extends Entity<IProduto> implements IProduto {
 	private _dataExclusao?: Date | null | undefined;
     private _status?: StatusProduto | undefined;
     
+    
+    
     //////////////
 	//Constantes//
 	//////////////
@@ -121,10 +123,11 @@ class Produto extends Entity<IProduto> implements IProduto {
     public get status(): StatusProduto | undefined {
         return this._status;
     }
-
     private set status(value: StatusProduto | undefined) {
         this._status = value;
     }
+
+   
     
     //////////////
     //Construtor//
@@ -140,6 +143,7 @@ class Produto extends Entity<IProduto> implements IProduto {
 		this.dataAtualizacao = produto.dataAtualizacao;
 		this.dataExclusao = produto.dataExclusao;
         this.status = produto.status;
+        
     }
 
     /////////////////////////
