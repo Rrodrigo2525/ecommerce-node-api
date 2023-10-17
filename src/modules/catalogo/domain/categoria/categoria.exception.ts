@@ -31,10 +31,14 @@ class CategoriaException extends DomainException {
       this.message = message;
     }
   }
+
+  const CategoriaExceptions = {
+    CategoriaException: CategoriaException,
+    NomeCategoriaNuloOuIndefinido: NomeCategoriaNuloOuIndefinido,
+    NomeCategoriaTamanhoMinimoInvalido: NomeCategoriaTamanhoMinimoInvalido,
+    NomeCategoriaTamanhoMaximoInvalido: NomeCategoriaTamanhoMaximoInvalido
+}
   
   export {
-    CategoriaException,
-    NomeCategoriaNuloOuIndefinido,
-    NomeCategoriaTamanhoMinimoInvalido,
-    NomeCategoriaTamanhoMaximoInvalido
+    CategoriaExceptions
   }

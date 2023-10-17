@@ -3,13 +3,12 @@ import { Produto } from '@modules/catalogo/domain/produto/produto.entity';
 import { StatusProduto } from '@modules/catalogo/domain/produto/produto.types';
 import { CategoriaPrismaRepository } from '@modules/catalogo/infra/database/categoria.prisma.repository';
 import { ProdutoPrismaRepository } from '@modules/catalogo/infra/database/produto.prisma.repository';
-import { PrismaClient } from '@prisma/client';
 import { DomainException } from '@shared/domain/domain.exception';
+import { prisma } from '@main/infra/database/orm/prisma/client';
+import { categoriaRepositorio as categoriaRepo } from '@modules/catalogo/infra/database';
+import { produtoRepositorio as produtoRepo } from '@modules/catalogo/infra/database';
 
-const prisma = new PrismaClient({
-    log: ['query', 'info'],
-    errorFormat: 'pretty'
-});
+
 
 async function main() {
     
@@ -19,8 +18,7 @@ async function main() {
         }
     );
 
-    const categoriaRepo = new CategoriaPrismaRepository(prisma);
-    const produtoRepo = new ProdutoPrismaRepository(prisma);
+    
 
     ////////////////////////////////
     //Recuperar Categoria por UUID//
@@ -92,15 +90,15 @@ async function main() {
     ///////////////////
 	//Inserir Produto//
 	///////////////////
-	/*
-    
+	
+   /* 
     const categoria01: Categoria = Categoria.recuperar({
-        id: "03f890b0-684a-44ba-a887-170e26bb2cd2",
+        id: "159eaca9-f7be-4668-8344-17ecc8263f3e",
         nome: 'Cozinha'
     });     
 
     const categoria02: Categoria = Categoria.recuperar({
-        id: "fc762da1-8d2c-4ffa-9559-901db94cb92e",
+        id: "21c6d449-2902-4d39-9d76-365180e6def9",
         nome: 'Banho'
     })
 
@@ -108,7 +106,7 @@ async function main() {
         nome:'Pano de Pratro',
         descricao:'Algodão fio 60',
         valor:30,
-        categorias:[categoria01]
+        categorias:[categoria01, categoria02]
     });
 
 	const produtoInserido = await produtoRepo.inserir(produto);
