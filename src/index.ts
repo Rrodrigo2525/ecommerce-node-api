@@ -81,7 +81,7 @@ async function main() {
 	//Recuperar Produto por UUID//
 	////////////////////////////////
 		
-	//const produtoRecuperado: Produto | null = await produtoRepo.recuperarPorUuid("7f35c7f4-ce26-4503-bfce-0afd937adfb8");
+	//const produtoRecuperado: Produto | null = await produtoRepo.recuperarPorUuid("e5eeda5d-cf95-4ac4-a7fe-128897d31f12");
 
 	//console.log(produtoRecuperado);
 

@@ -9,7 +9,7 @@ class CategoriaPrismaRepository extends PrismaRepository implements ICategoriaRe
         const categoriaRecuperada = await this._datasource.categoria.findUnique(
             {
                 where: {
-                    id: uuid
+                   id: uuid
                 }
             }
         )
