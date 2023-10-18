@@ -6,6 +6,7 @@ import { faker } from "@faker-js/faker";
 import { Produto } from "@modules/catalogo/domain/produto/produto.entity";
 import { ProdutoMap } from "../mappers/produto.map";
 import { StatusProduto } from "@modules/catalogo/domain/produto/produto.types";
+import { produtoIncludeCategoriaPrisma } from "@shared/infra/database/prisma.types";
 
 
 
@@ -43,9 +44,9 @@ describe('Repositório Prisma: Produto', () => {
 
             const ProdutoPrisma = {
                 id: UUIDValido,
-                nome: nomeProduto,
-                descricao: descricao,
-                valor: valor,
+                nome: 'nomeProduto',
+                descricao: 'descricao teste',
+                valor: 0,
                 dataCriacao: faker.date.anytime(),
                 dataAtualizacao: faker.date.anytime(),
                 dataExclusao: faker.date.anytime(),
@@ -70,7 +71,7 @@ describe('Repositório Prisma: Produto', () => {
                     dataAtualizacao: faker.date.anytime(),
                     categoria: {
                         id: '189eaca9-f7be-4668-8344-17ecc8263f3e',
-                        nome: nomeCategoria,
+                        nome: 'nomeCategoria',
                         dataCriacao: faker.date.anytime(),
                         dataAtualizacao: faker.date.anytime(),
                     }
@@ -88,8 +89,10 @@ describe('Repositório Prisma: Produto', () => {
             expect(prismaMock.produto.findUnique).toHaveBeenCalledTimes(1);
             expect(prismaMock.produto.findUnique).toBeCalledWith({
                 where: {
-                   id: produto.id
-                }    
+                    id: produto.id,
+                },
+                include: produtoIncludeCategoriaPrisma
+            });    
             }); 
 
         });
@@ -97,7 +100,5 @@ describe('Repositório Prisma: Produto', () => {
     });
 
 
-
-});
 
   
