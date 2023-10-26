@@ -16,10 +16,7 @@ import { produtoIncludeCategoriaPrisma } from "@shared/infra/database/prisma.typ
 const prismaMock: DeepMockProxy<PrismaClient> = mockDeep<PrismaClient>();
 let produtoRepositorio: ProdutoPrismaRepository;
 let UUIDValido: string;
-let nomeProduto: string;
-let descricao: string;
-let valor: number;
-let nomeCategoria: string; 
+
 
 
 describe('Repositório Prisma: Produto', () => {
