@@ -33,14 +33,14 @@ class CategoriaPrismaRepository extends PrismaRepository implements ICategoriaRe
 		return false;
     }
     async inserir(categoria: Categoria): Promise<Categoria> {
-        await this._datasource.categoria.create({
+        const categoriaInserida = await this._datasource.categoria.create({
             data: {
                 id: categoria.id,
                 nome: categoria.nome
             }
         }
         );
-        return categoria;
+        return CategoriaMap.fromPrismaModelToDomain(categoriaInserida);
     }
     async atualizar(uuid: string, categoria: Categoria): Promise<boolean> {
         const categoriaAtualizada = await this._datasource.categoria.update(
