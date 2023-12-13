@@ -3,7 +3,7 @@
 @apiversion = api/v1
 
 ### Recuperar Um Categoria por ID
-GET http://{{host}}:{{port}}/{{apiversion}}/categorias/db3d7795-48ca-4066-86ca-6e9727cb860b
+GET http://{{host}}:{{port}}/{{apiversion}}/categorias/db3d7795-48ca-4066-86ca-6e9727cb860c
 
 
 ### Recuperar Todas as Categorias
