@@ -5,7 +5,6 @@ import { Categoria } from "../../domain/categoria/categoria.entity";
 import { CategoriaMap } from "./categoria.map";
 import { StatusProdutoPrisma } from "@prisma/client";
 
-
 class ProdutoMap {
 
     public static toDTO(produto: Produto): IProduto {
@@ -14,7 +13,7 @@ class ProdutoMap {
           nome: produto.nome,
           descricao: produto.descricao,
           valor: produto.valor,
-          categorias: produto.categorias,
+          categorias:  produto.categorias.map((categoria) => { return CategoriaMap.toDTO(categoria)}),
           dataCriacao: produto.dataCriacao,
           dataAtualizacao: produto.dataAtualizacao,
           dataExclusao: produto.dataExclusao,
@@ -58,7 +57,6 @@ class ProdutoMap {
     public static toStatusProdutoPrisma(status: StatusProduto): StatusProdutoPrisma{
         return StatusProdutoPrisma[status.toString() as keyof typeof StatusProdutoPrisma];
     }
-
 
 
 }

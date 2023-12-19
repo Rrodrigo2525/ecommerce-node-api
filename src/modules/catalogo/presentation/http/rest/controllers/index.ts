@@ -1,12 +1,13 @@
-
 import { RecuperarCategoriaPorIdExpressController } from "./recuperar-categoria-por-id.express.controller";
 import { RecuperarTodasCategoriaExpressController } from "./recuperar-todas-categorias.express.controller";
 import { InserirCategoriaExpressController } from "./inserir-categoria.express.controller";
-import { atualizarCategoriaUseCase, deletarCategoriaUseCase, recuperarCategoriaPorIdUseCase } from "@modules/catalogo/application/use-case";
+import { atualizarCategoriaUseCase, deletarCategoriaUseCase, recuperarCategoriaPorIdUseCase, recuperarTodosProdutosUseCase } from "@modules/catalogo/application/use-case";
 import { recuperarTodasCategoriasUseCase } from "@modules/catalogo/application/use-case";
 import { inserirCategoriaUseCase } from "@modules/catalogo/application/use-case";
 import { AtualizarCategoriaExpressController } from "./atualizar-categoria.express.controller";
 import { DeletarCategoriaExpressController } from "./deletar-categoria.express.controller";
+import { RecuperarTodosProdutosExpressController } from "./recuperar-todos-produtos.express.controller";
+
 
 
 const recuperarCategoriaPorIdController = new RecuperarCategoriaPorIdExpressController(recuperarCategoriaPorIdUseCase);
@@ -14,6 +15,7 @@ const recuperarTodasCategoriasController = new RecuperarTodasCategoriaExpressCon
 const inserirCategoriaController = new InserirCategoriaExpressController(inserirCategoriaUseCase);
 const atualizarCategoriaController = new AtualizarCategoriaExpressController(atualizarCategoriaUseCase);
 const deletarCategoriaController = new DeletarCategoriaExpressController(deletarCategoriaUseCase);
+const recuperarTodosProdutosController = new RecuperarTodosProdutosExpressController(recuperarTodosProdutosUseCase);
 
 
 export {
@@ -21,5 +23,7 @@ export {
     recuperarTodasCategoriasController,
     inserirCategoriaController,
     atualizarCategoriaController,
-    deletarCategoriaController
+    deletarCategoriaController,
+    recuperarTodosProdutosController
+
 }
