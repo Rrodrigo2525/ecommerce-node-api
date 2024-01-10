@@ -1,7 +1,10 @@
 import express from 'express';
 import { atualizarCategoriaController, deletarCategoriaController, inserirCategoriaController, recuperarCategoriaPorIdController, recuperarTodasCategoriasController } from './controllers';
-import { contentTypeMiddleware } from '@main/presentation/http/middlewares/content-type.middleware';
+import { contentType} from '@main/presentation/http/middlewares/content-type.middleware';
 import { validaInputInserirCategoria } from '../middlewares/valida-input-inserir-categoria.middleware';
+import { authUsuario } from '@main/presentation/http/middlewares/auth-usuario.middleware';
+
+
 
 const categoriaRouter = express.Router();
 
@@ -17,19 +20,22 @@ categoriaRouter.get(
 
 categoriaRouter.post(
     '/',
-    contentTypeMiddleware,
+    authUsuario(['ADMINISTRADOR']),
+    contentType,
     validaInputInserirCategoria,
     (request, response, next) =>  inserirCategoriaController.inserir(request, response, next)
 );
 
 categoriaRouter.put(
     '/:id',
-    contentTypeMiddleware,
+    authUsuario(['ADMINISTRADOR']),
+    contentType,
     (request, response, next) =>  atualizarCategoriaController.atualizar(request, response, next)
 )
 
 categoriaRouter.delete(
     '/:id',
+    authUsuario(['ADMINISTRADOR']),
     (request, response, next) =>  deletarCategoriaController.deletar(request, response, next)
 )
 

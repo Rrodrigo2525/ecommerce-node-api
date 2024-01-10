@@ -1,5 +1,6 @@
 import { categoriaRouter } from '@modules/catalogo/presentation/http/rest/categoria.routes';
 import { produtoRouter } from '@modules/catalogo/presentation/http/rest/produto.routes';
+import { usuarioRouter } from '@modules/usuario/presentation/http/rest/usuario.routes';
 import express, { Router } from 'express';
 
 const apiv1Router: Router = express.Router();
@@ -11,9 +12,8 @@ apiv1Router.use(
 
 apiv1Router.use(
     '/usuarios',
-    function (request, response, next) {
-        response.json({"entidade":"usuarios"});
-    }  
+   usuarioRouter
+      
 );
 
 apiv1Router.use(

@@ -17,4 +17,4 @@ function contentTypeMiddleware(
     next();
 }
 
-export { contentTypeMiddleware }
+export { contentTypeMiddleware as contentType }
