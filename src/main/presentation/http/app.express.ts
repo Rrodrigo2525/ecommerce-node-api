@@ -7,9 +7,10 @@ import { errorLogger } from "./middlewares/error-logger.middleware";
 import { errorResponder } from "./middlewares/error-responser.middleware";
 import { invalidPath } from "./middlewares/invalid-path.middleware";
 import cors from "cors";
+import { swaggerDocumentation } from "./customizers/swagger-documentation.customizer";
 
 
-const createExpressApplication = async (): Promise<Application>  => {
+const createExpressApplication = async (): Promise<Application> => {
     const app: Application = express();
     app.disable('x-powered-by');
 
@@ -27,9 +28,11 @@ const createExpressApplication = async (): Promise<Application>  => {
 
     //Middleware Customizados
     app.use(customMorganMiddleware);
-   
+
     //Middlewares de Rotas
     app.use('/api/v1', apiv1Router);
+    //Customizadores
+    swaggerDocumentation(app);
 
     //Middleware de Tratamento de Erros (Error Handling)
     app.use(invalidPath)
